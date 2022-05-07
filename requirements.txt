@@ -1,3 +1,5 @@
+heroku/python
+https://github.com/heroku/heroku-geo-buildpack.git
 ipython==8.3.0
 matplotlib==3.5.1
 midi2audio==0.1.1
