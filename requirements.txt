@@ -1,7 +1,1 @@
 streamlit
-requests
-json
-tegridy_tools
-matplotlib
-midi2audio
-IPython
