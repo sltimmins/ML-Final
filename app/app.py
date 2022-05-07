@@ -1,4 +1,5 @@
 import streamlit as st
+from generate import generate_song
 
 st.title('A.I. Generated Music')
 st.write("In this project, we deploy MuseNet's deep neural network that generates A.I. generated music onto a wide online platform.")
@@ -34,7 +35,7 @@ click = st.button("Generate a Song!")
 if click:
     st.header("Listen to the A.I. Generated Music!")
     with st.spinner('Wait for it...'):
-        path = './audio/file.mp3' #CALL FUNCTION
+        path = generate_song(genre, instrument)
 
     audio_file = open(path, 'rb')
     audio_bytes = audio_file.read()
