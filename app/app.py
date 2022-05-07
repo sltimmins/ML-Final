@@ -29,15 +29,17 @@ instrument["harp"] = harp
 instrument["guitar"] = guitar
 instrument["bass"] = bass
 
-st.write("This button calls the function that calls the API and generates the song.")
 click = st.button("Generate a Song!")
 
 if click:
     st.header("Listen to the A.I. Generated Music!")
     with st.spinner('Wait for it...'):
-        path = generate_song(genre, instrument)
-
+        path = generate_song(instrument, genre)
+        print(path)
+    
+    # path = "./audio/test.mp3"
+    
     audio_file = open(path, 'rb')
     audio_bytes = audio_file.read()
-    st.audio(audio_bytes, format='audio/mp3')
+    st.audio(audio_bytes, format='audio/wav')
     st.balloons()

@@ -166,7 +166,7 @@ def generate_song(instruments, genre):
         midi_file.close()
 
 
-    FluidSynth("bin/FluidR3_GM.sf2", 16000).midi_to_audio('bin/song.mid', 'bin/song.mp3')
-    Audio('bin/song.mp3', rate=16000)
+    FluidSynth("bin/FluidR3_GM.sf2", 16000).midi_to_audio('bin/song.mid', 'bin/song.wav')
+    Audio('bin/song.wav', rate=16000)
 
-    return 'bin/song.mp3'
+    return './bin/song.wav'
