@@ -1,12 +1,7 @@
 #@title Import modules
 
 print('Loading needed modules. Please wait...')
-import os
-from datetime import datetime
-import secrets
 import requests # for MuseNet API
-import copy
-import tqdm
 import json
 
 
@@ -16,10 +11,7 @@ from tegridy_tools import TMIDI
 # for plotting/listening only
 import matplotlib.pyplot as plt
 from midi2audio import FluidSynth
-import fluidsynth
 
-import pretty_midi
-import librosa.display
 # import matplotlib.pyplot as plt
 from IPython.display import display, Javascript, HTML, Audio
 
