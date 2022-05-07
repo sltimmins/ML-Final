@@ -16,6 +16,8 @@ from tegridy_tools import TMIDI
 # for plotting/listening only
 import matplotlib.pyplot as plt
 from midi2audio import FluidSynth
+import fluidsynth
+
 import pretty_midi
 import librosa.display
 # import matplotlib.pyplot as plt
@@ -88,18 +90,6 @@ def generate_song(instruments, genre):
     print('Done!')
 
     return encoding
-
-inst = {
-'piano' : True,
-'strings' : True,
-'winds' : True,
-'drums' : True, 
-'harp' : True ,
-'guitar' : True,
-'bass' : True ,
-}
-
-genre = 'chopin'
 
 
 encoding = generate_song(inst, genre)
@@ -178,21 +168,11 @@ output = output_header + [patch_list + song]
 
 midi_data = TMIDI.opus2midi(output, text_encoding)
 
-with open('song.mid', 'wb') as midi_file:
+with open('bin/song.mid', 'wb') as midi_file:
     midi_file.write(midi_data)
     midi_file.close()
 
-print('Done! Enjoy! :)')
 
-print('Rendering and plotting generated output...')
+FluidSynth("bin/FluidR3_GM.sf2", 16000).midi_to_audio('bin/song.mid', 'bin/song.mp3')
 
-pm = pretty_midi.PrettyMIDI('song.mid')
-
-piano_roll = pm.get_piano_roll()
-
-plt.figure(figsize=(14, 5))
-librosa.display.specshow(piano_roll, x_axis='time', y_axis='cqt_note', fmin=1, hop_length=160, sr=16000, cmap=plt.cm.hot)
-plt.title('song.mid')
-print(TMIDI.score2stats(TMIDI.opus2score(output)))
-FluidSynth("/usr/share/sounds/sf2/FluidR3_GM.sf2", 16000).midi_to_audio(str('song.mid'), str('song.wav'))
 Audio(str('song.wav'), rate=16000)
