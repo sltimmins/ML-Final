@@ -33,6 +33,10 @@ click = st.button("Generate a Song!")
 
 if click:
     st.header("Listen to the A.I. Generated Music!")
-    audio_file = open('./audio/test.mp3', 'rb')
+    with st.spinner('Wait for it...'):
+        path = './audio/file.mp3' #CALL FUNCTION
+
+    audio_file = open(path, 'rb')
     audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/mp3')
+    st.balloons()
